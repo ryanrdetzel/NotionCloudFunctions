@@ -1,0 +1,7 @@
+Need two env variables set
+
+token = notion token taken from session cookie
+page = page url we want to add the entry to
+
+Testing locally
+gcpfemu --module quickadd.py --function quickadd
