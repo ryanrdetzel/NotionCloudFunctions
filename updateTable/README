@@ -1,12 +1,3 @@
-Provides a way to quickly add blocks to a Notion page
-
-Usecases
-* Terminal
-* Mobile brower with simple website to add from
-* Mobile app that just does this.
-* Alfred quick launch on Mac
-* Email, txt, telegraph clients:wq
-
 Function is running in Google Cloud
 
 Need these env variables set
@@ -22,6 +13,6 @@ export token=""
 export page=""
 export api_key=''
 
-gcpfemu --module quickadd.py --function quickadd
+gcpfemu --module updateTable.py --function updateTable 
 ----
 Change permission and you can run it directly to test locally.
