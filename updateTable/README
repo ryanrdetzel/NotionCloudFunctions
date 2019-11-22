@@ -1,3 +1,5 @@
+This function will update my Home Automation database with the last seen date
+
 Function is running in Google Cloud
 
 Need these env variables set
