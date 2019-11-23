@@ -1,27 +1,14 @@
-Provides a way to quickly add blocks to a Notion page
+A simple web form that submits to a google cloud function which when adds the text to my Notion inbox page
 
-Usecases
-* Terminal
-* Mobile brower with simple website to add from
-* Mobile app that just does this.
-* Alfred quick launch on Mac
-* Email, txt, telegraph clients:wq
-
-Function is running in Google Cloud
-
-Need these env variables set
-
-token = notion token taken from session cookie
-page = page url we want to add the entry to
-api_key = random api key to prevent access
-
-Testing locally
-Make run.sh file and add the following content setting the correct env vars
+env.yaml should contain these keys
 ----
-export token=""
-export page=""
-export api_key=''
+topic_name: GOOGLE PUB/SUB TOPIC
+project_id: GOOGLE PROJECT ID
+redirect: URL TO REDIRECT TO AFTER ADD
 
-gcpfemu --module quickadd.py --function quickadd
-----
-Change permission and you can run it directly to test locally.
+To deploy create the above env.yaml file and run:
+gcloud functions deploy quickAdd --env-vars-file env.yaml --runtime python37 --trigger-http
+
+To update the static html file run these
+gsutil cp -a public-read index.html gs://dxxd-static 
+gsutil setmeta -h "Cache-Control:public, max-age=0" gs://dxxd-static/index.html

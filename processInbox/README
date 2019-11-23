@@ -1,1 +1,15 @@
-Subscribes to message on the inbox topic and adds a new textblock entry for any new message
+Subscribes to messages on the inbox topic in google cloud and adds a new textblock entry to my Notion page
+depending on if it's a quickadd entry or an email entry
+
+env.yaml should contain these keys
+----
+topic_name: GOOGLE PUB/SUB TOPIC
+project_id: GOOGLE PROJECT ID
+redirect: URL TO REDIRECT TO AFTER ADD
+
+token:  NOTION v2 TOKEN
+page: NOTION PAGE TO ADD FOR QUICK ADD
+page_email: NOTION PAGE TO ADD EMAILS
+
+To deploy create the above env.yaml file and run:
+gcloud functions deploy processInbox --env-vars-file env.yaml --runtime python37 --trigger-topic inbox

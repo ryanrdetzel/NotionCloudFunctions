@@ -1,3 +1,5 @@
+A simple web endpoint that when called will update the last sene property on my home automations table
+
 env.yaml should contain these keys
 ----
 token: NOTION v2 TOKEN

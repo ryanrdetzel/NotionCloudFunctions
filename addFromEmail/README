@@ -1,0 +1,11 @@
+A simple web endpoint that gets called when a new email comes into a certain sendgrid address.
+The message is then published to google cloud for processing by processInbox
+
+env.yaml should contain these keys
+----
+topic_name: GOOGLE CLOUD PUB/SUB TOPIC
+project_id: GOOGLE CLOUD PROJECT ID
+
+
+To deploy create the above env.yaml file and run:
+gcloud functions deploy addFromEmail --env-vars-file env.yaml --runtime python37 --trigger-http
