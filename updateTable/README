@@ -1,20 +1,9 @@
-This function will update my Home Automation database with the last seen date
-
-Function is running in Google Cloud
-
-Need these env variables set
-
-token = notion token taken from session cookie
-page = page url we want to add the entry to
-api_key = random api key to prevent access
-
-Testing locally
-Make run.sh file and add the following content setting the correct env vars
+env.yaml should contain these keys
 ----
-export token=""
-export page=""
-export api_key=''
+token: NOTION v2 TOKEN
+page: NOTION PAGE URL
+api_key: MADE UP API KEY
 
-gcpfemu --module updateTable.py --function updateTable 
-----
-Change permission and you can run it directly to test locally.
+
+To deploy create the above env.yaml file and run:
+gcloud functions deploy updateTable --env-vars-file env.yaml --runtime python37 --trigger-http
