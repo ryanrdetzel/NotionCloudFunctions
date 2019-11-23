@@ -9,14 +9,16 @@ project_id = os.environ.get('project_id', 'Missing project id')
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_name)
 
-def hello_world(request):
+def addFromEmail(request):
   args = request.form.to_dict()
   fromAddress = args.get('from')
   subject = args.get('subject')
   text = args.get('text')
 
   data_obj = {
-    'title': subject + ' -- ' + text
+    'subject': subject,
+    'text': text,
+    'from': fromAddress
   }
   data = json.dumps(data_obj)
   publisher.publish(

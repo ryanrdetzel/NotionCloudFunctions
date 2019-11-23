@@ -1,8 +1,9 @@
 import os
+import json
+
 from datetime import datetime
 from flask import redirect
 from google.cloud import pubsub_v1
-import json
 
 topic_name = os.environ.get('topic_name', 'Missing topic name')
 project_id = os.environ.get('project_id', 'Missing project id')
@@ -11,7 +12,7 @@ redirect_page = os.environ.get('redirect', 'Missing redirect page')
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_name)
 
-def quickadd(request):
+def quickAdd(request):
   title = 'Untitled'
   args = request.args.to_dict(flat=True)
   if args and 'title' in args:
